@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to Eazybanks accounts microservice for QA environment"
+  contactDetails:
+    name: "Smita Dey - QA Lead"
+    email: "smita@eazybanks.com"
+  onCallSupport:
+    - (666) 555-5653
+    - (666) 555-5983

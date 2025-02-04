@@ -1,0 +1,34 @@
+spring:
+    application:
+    name: accounts
+    datasource:
+        url: jdbc:h2:mem:testdb
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:
+
+    jpa:
+        show-sql: true
+        hibernate:
+            ddl-auto: update
+    h2:
+        console:
+            enabled: true
+    config:
+        import:
+            - "application_qa.yml"
+            - "application_prod.yml"
+    profiles:
+        active: "qa"
+
+build:
+    version: "3.0"
+
+accounts:
+    message: "Welcome to Eazybanks accounts microservice for dev environment"
+    contactDetails:
+        name: "John Doe - Developer"
+        email: "doe@eazybanks.com"
+    onCallSupport:
+        - (555) 555-5553
+        - (555) 555-5554
