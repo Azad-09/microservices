@@ -33,15 +33,26 @@ logging:
   level:
     root: INFO
     org.springframework.boot: DEBUG
+    com:
+      eazybytes:
+        cards: DEBUG
+
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   endpoint:
     health:
       show-details: always
+      probes:
+        enabled: true
     shutdown:
       enabled: true
   info:
@@ -66,3 +77,5 @@ info:
     name: cards
     description: "Eazy bank Cards Microservice"
     version: 1.0.0
+
+

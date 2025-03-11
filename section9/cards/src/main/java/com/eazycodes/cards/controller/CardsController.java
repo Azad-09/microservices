@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -23,6 +25,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+
+
 @Tag(
         name = "CRUD REST APIs for Cards Microservice",
         description = "CRUD REST APIs in EazyCode to CREATE, UPDATE, FETCH, and DELETE card details"
@@ -31,6 +35,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
 public class CardsController {
+
+    public static final Logger logger = LoggerFactory.getLogger(CardsController.class);
 
     private final ICardService iCardService;
 
@@ -93,7 +99,9 @@ public class CardsController {
     )
     @GetMapping("/fetch")
     public ResponseEntity<CardsDto> fetchCardDetails(@Valid @RequestParam
-                                                         @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number should be of 10 digit") String mobileNumber){
+                                                         @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number should be of 10 digit") String mobileNumber,
+                                                     @RequestHeader("eazybank-correlation-id") String correlationId){
+        logger.info("eazybanks correlation id found: {}", correlationId);
         CardsDto cardsDto = iCardService.fetchCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
     }
