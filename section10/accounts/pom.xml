@@ -58,7 +58,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-circuitbreaker-reactor-resilience4j</artifactId>
+			<artifactId>spring-cloud-starter-circuitbreaker-resilience4j</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -114,7 +114,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>2923789523/${project.artifactId}:s9</image>
+						<image>2923789523/${project.artifactId}:s10</image>
 					</to>
 				</configuration>
 			</plugin>

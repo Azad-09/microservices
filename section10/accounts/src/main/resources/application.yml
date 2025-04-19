@@ -72,9 +72,29 @@ logging:
         accounts: DEBUG
 
 resilience4j.circuitbreaker:
-    config:
+    configs:
       default:
         slidingWindowSize: 10
         permittedNumberOfCallsInHalfOpenState: 2
         failureRateThreshold: 50
         waitDurationInOpenState: 10000
+        minimumNumberOfCalls: 5
+
+resilience4j.retry:
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        ignoreExceptions:
+          - java.lang.NullPointerException
+        retryException:
+          - java.concurrent.TimeoutException
+
+resilience4j.ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 100
+        limitRefreshPeriod: 5000
+        timeoutDuration: 1

@@ -38,7 +38,7 @@ public class LoansController {
 
     public static final Logger logger = LoggerFactory.getLogger(LoansController.class);
 
-    private ILoansService iLoansService;
+    private final ILoansService iLoansService;
 
     public LoansController(ILoansService iLoansService) {
         this.iLoansService = iLoansService;
@@ -234,6 +234,7 @@ public class LoansController {
     })
     @GetMapping("/loans-info")
     public ResponseEntity<LoansInfoDto> getCardsInformation(){
+        logger.info("Invoked loan service");
         return ResponseEntity.status(HttpStatus.OK).body(loansInfoDto);
     }
 }

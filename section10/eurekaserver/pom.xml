@@ -74,7 +74,7 @@
 				<version>3.4.4</version>
 				<configuration>
 					<to>
-						<image>2923789523/${project.artifactId}:s9</image>
+						<image>2923789523/${project.artifactId}:s10</image>
 					</to>
 				</configuration>
 			</plugin>
